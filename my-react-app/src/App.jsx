@@ -1,0 +1,23 @@
+function app(){
+  return(
+    <>
+    <div>
+    <h1 style ={{color:"blue"}}>Bird</h1>
+    <div style={{display:"flex"}}>
+    <img style={{width:200}}
+    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCAOOQIqXkn4dFf_0mied78kTQpL62rX8mxg&s" alt="birds"/>
+    <p className="avian">Rooster. A rooster is a male chicken. ...
+        Crow. A crow is a black-colored bird. ...
+        Eagle. An eagle is a large and powerful bird. ...
+        Ostrich. An ostrich is the largest bird in the world. ...
+        Owl. An owl is a night bird. ...
+         Peacock. A peacock is one of the most beautiful birds. ...
+         Parrot. ...
+          Bat.
+    </p>
+    </div>
+    </div>
+    </>
+  );
+}
+export default app;
