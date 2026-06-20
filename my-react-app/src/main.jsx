@@ -1,9 +1,10 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import JSX from "./Events.jsx"
+import './index.css'
+import AnimeApp from "./AppAnime.jsx";
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <JSX></JSX>
+    <AnimeApp />
   </StrictMode>,
 )

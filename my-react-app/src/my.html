@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Anime World</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    .light {
+      background: #f9f9f9;
+      color: #222;
+    }
+    .dark {
+      background: #222;
+      color: #f9f9f9;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      background: #ff4757;
+      padding: 10px;
+      color: white;
+    }
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      margin: 0;
+      padding: 0;
+    }
+    .navbar li {
+      cursor: pointer;
+    }
+    button {
+      background: #2f3542;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+    .page {
+      padding: 20px;
+    }
+    h2 {
+      margin-top: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- React + Babel CDN -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    const { useState } = React;
+
+    function Navbar({ setPage, toggleDark }) {
+      return (
+        <nav className="navbar">
+          <h1>Anime World</h1>
+          <ul>
+            <li onClick={() => setPage("home")}>Home</li>
+            <li onClick={() => setPage("characters")}>Character Explorer</li>
+            <li onClick={() => setPage("watchlist")}>Watchlist</li>
+            <li onClick={() => setPage("quiz")}>Quiz Game</li>
+            <li onClick={() => setPage("recommendations")}>Recommendations</li>
+          </ul>
+          <button onClick={toggleDark}>🌙 Dark Mode</button>
+        </nav>
+      );
+    }
+
+    function Home() {
+      return (
+        <div className="page">
+          <h2>Trending Anime</h2>
+          <p>List of trending anime here...</p>
+          <h2>Search Anime</h2>
+          <p>Search bar and results...</p>
+          <h2>Anime Details</h2>
+          <p>Rating, episodes, genre...</p>
+          <h2>Favorites</h2>
+          <p>Your favorite anime list...</p>
+          <h2>Profile</h2>
+          <p>User profile info...</p>
+        </div>
+      );
+    }
+
+    function CharacterExplorer() {
+      return (
+        <div className="page">
+          <h2>Anime Character Explorer</h2>
+          <p>Search characters, images, filter by series, popularity rankings...</p>
+        </div>
+      );
+    }
+
+    function Watchlist() {
+      return (
+        <div className="page">
+          <h2>Anime Watchlist Tracker</h2>
+          <p>Add anime, mark Watching/Completed, track progress, personal ratings...</p>
+        </div>
+      );
+    }
+
+    function QuizGame() {
+      return (
+        <div className="page">
+          <h2>Anime Quiz Game</h2>
+          <p>Guess the anime from an image, multiple-choice, score system, leaderboard...</p>
+        </div>
+      );
+    }
+
+    function Recommendations() {
+      return (
+        <div className="page">
+          <h2>Anime Recommendation App</h2>
+          <p>Select genres, get recommendations, save favorites, anime details...</p>
+        </div>
+      );
+    }
+
+    function App() {
+      const [page, setPage] = useState("home");
+      const [darkMode, setDarkMode] = useState(false);
+
+      const renderPage = () => {
+        switch(page) {
+          case "home": return <Home />;
+          case "characters": return <CharacterExplorer />;
+          case "watchlist": return <Watchlist />;
+          case "quiz": return <QuizGame />;
+          case "recommendations": return <Recommendations />;
+          default: return <Home />;
+        }
+      };
+
+      return (
+        <div className={darkMode ? "dark" : "light"}>
+          <Navbar setPage={setPage} toggleDark={() => setDarkMode(!darkMode)} />
+          {renderPage()}
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<App />);
+  </script>
+</body>
+</html>
